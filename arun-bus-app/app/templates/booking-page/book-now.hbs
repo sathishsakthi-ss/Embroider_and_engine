@@ -1,0 +1,26 @@
+{{(page-title "BookNow")}}
+<BookingPopup class="booking-poup" @show={{this.parentController.popShow}} @close={{this.parentController.closePop}}>
+        <div class={{this.parentController.ticketBooked}}>
+            <div class="popup-header">
+                <div>Add Passengers</div>
+            </div>
+            <form>
+                <div class="popup-content">
+                    {{#each this.parentController.passengers as |passenger index|}}
+                    <Passenger @model={{passenger}} @validate={{this.parentController.showValidationsForPassengers}} @index={{(calculate-sum index 1)}} />
+                    {{/each}}
+                    <button style="color:red;text-decoration:underline;font-size:12px;" type="submit" {{action
+                        this.parentController.removePassenger}}>Remove Passenger</button>
+                    {{!-- {{#if (check-equals this.passengers.length this.seatCount)}} --}}
+                    {{!-- {{/if}} --}}
+                </div>
+                <button class="button2" type="submit" {{action this.parentController.bookTickets}}>Book Tickets</button>
+                <button class="button1" type="button" {{action this.parentController.addPassenger}}>Add Passenger</button>
+                <div style="float:right;">Total Fare : {{(multiply this.parentController.fare this.parentController.passengers.length)}}</div>
+            </form>
+            {{#if this.parentController.needLogin}}
+            <LinkTo class="button1" @route="login">Login</LinkTo>
+            {{/if}}
+        </div>
+    </BookingPopup>
+{{outlet}}

@@ -1,0 +1,26 @@
+{{(page-title "Homepage")}}
+<div class="main-form">
+    <h3>Welcome to Green Bus</h3>
+    <Profile @username={{@model.loginUserName}} @operator={{@model.isOperator}} ></Profile>
+    {{#if (check-equals @model.isOperator 'true')}}
+    <h4>Buses running today</h4>
+    <ul>
+        <li class="bus-list">
+            Chennai - Coimbatore
+            <br>
+            <div style="color:grey;text-height:10px;">Seats filled: 23</div>
+            <div>Date : 01-03-2024</div>
+            <div style="color:grey;text-height:10px;">Time : 23:15</div>
+        </li>
+    </ul>
+    <LinkTo class="button1" @route="booking-page">View your buses</LinkTo>
+    {{else}}
+    <SearchBus @model={{@model}} ></SearchBus>
+    {{#unless @model.loginUserName}}
+    <LinkTo class="button1" @route="login">Login</LinkTo>
+    <LinkTo class="button1" @route="login" @query={{hash isOperatorPage="true" }}>Login as Operator</LinkTo>
+    {{/unless}}
+    {{/if}}
+
+</div>
+{{!-- {{route-list content= selectedValue=selectedValue action=(action 'handleChange')}} --}}

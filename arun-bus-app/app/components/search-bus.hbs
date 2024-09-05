@@ -1,0 +1,49 @@
+<form {{on 'submit' this.saveSearchAllowBooking}}>
+    <div class={{this.success}}>{{this.message}}</div>
+    <div>
+        <label for="from">From :</label>
+        <br>
+        <select name="from" required {{on 'change' this.setFromSelected}} value={{this.from}}>
+            <option>Select Route</option>
+            {{#each @model.places as |route|}}
+                <option value={{route}} disabled={{(check-equals this.toSelected route)}}>{{route}}</option>
+            {{/each}}
+        </select>
+        {{#if this.showValidations}}
+            {{#if this.validations.attrs.from.isInvalid}}
+                <span class="error">{{this.validations.attrs.from.message}}</span>
+            {{/if}}
+        {{/if}}
+    </div>
+    <div>
+        <label for="to">To :</label>
+        <br>
+        <select name="to" required {{on 'change' this.setToSelected}} value={{this.to}}>
+            <option >Select Route</option>
+            {{#each @model.places as |route|}}
+                <option value={{route}} disabled={{(check-equals this.fromSelected route)}}>{{route}}</option>
+           {{/each}}
+        </select>
+        {{#if this.showValidations}}
+            {{#if this.validations.attrs.to.isInvalid}}
+                <span class="error">{{this.validations.attrs.to.message}}</span>
+            {{/if}}
+        {{/if}}
+    </div>
+    <label for="date"  >Date :</label>
+    <br>
+    <Input
+        @type="date" 
+        id="date" 
+        name="date"  
+        @value={{this.date}}
+    />
+     {{#if this.showValidations}}
+            {{#if this.validations.attrs.date.isInvalid}}
+                <span class="error">{{this.validations.attrs.date.message}}</span>
+            {{/if}}
+        {{/if}}
+    <br>
+    
+    <CommonButton @class="center button2" @type="submit" @label="Search Buses"></CommonButton>
+</form>

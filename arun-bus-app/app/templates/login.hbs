@@ -1,0 +1,6 @@
+{{(page-title "Login")}}
+    <LoginFormAddon @onSubmit={{this.login}} @message={{this.errorMessage}}></LoginFormAddon>
+    {{!-- <LoginForm @onSubmit={{this.login}} @message={{this.errorMessage}}></LoginForm> --}}
+    <div class="main-form">--(OR)---</div>
+    <SignupForm @model={{@model.signup_model}} @onSubmit={{action this.signup}} @checked={{@model.operatorChecked}} @validate={{this.signUpvalidate}}></SignupForm>
+{{outlet}}

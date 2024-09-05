@@ -1,0 +1,64 @@
+{{(page-title "BookingPage")}}
+
+<div class="main-form">
+    {{!-- <NotificationMessage @message={{this.errorMessage}}/> --}}
+    {{#if (check-equals @model.isOperator 'true')}}
+        <h4>Your Buses</h4>
+        <CommonButton @class="button2" @label="Add Bus" @action={{action this.showAddBusForm}}></CommonButton>
+        {{!-- <CommonButton @class="button2" @label="Edit Bus" @action={{action this.addBus}}/> --}}
+        <BookingPopup class="booking-poup" @show={{this.busPopShow}}>
+            <form>
+                <div class="passenger-details">
+                    <div>Add Bus</div>
+                    <label for="name">Bus Name:</label><br>
+                    <Input @type="text" id="name" required @value={{this.busName}}/> <br>
+                    <label for="seat-no">Total Seats:</label><br>
+                    <input type="text" id="seat-no" ><br>
+                    <label for="route-from">Travelling From:</label><br>
+                    <input type="text" id="route-from" ><br>
+                    <label for="route-to">Travelling To:</label><br>
+                    <input type="text" id="route-to" ><br>
+                    <CommonButton @class="button2" @label="Add Bus" @type="submit" @action={{action this.addBus}}></CommonButton>
+                </div>
+            </form>
+        </BookingPopup>
+    {{else}}
+        <h4>Available Buses</h4>
+    {{/if}}
+    <Profile @username={{@model.loginUserName}} @operator={{@model.isOperator}}></Profile>
+     {{#unless (check-equals @model.isOperator 'true')}}
+        <h3>Journey Details</h3>
+        <div>
+            <div> From : {{@model.journey.from}}    </div>
+            <div> To : {{@model.journey.to}}    </div>
+            <div> date : {{@model.journey.date}}    </div>
+        </div>
+    {{/unless}}
+
+            <ul>
+                {{#each @model.buses as |bus|}}
+                    <li class="bus-list">
+                    {{bus.code}} - {{bus.name}}
+                    <br>
+                    <div style="color:grey;text-height:10px;">({{bus.from}} to {{bus.to}})</div>
+                    <br>
+                        *<b>{{bus.availableSeats}} seats available  </b>                  
+                    {{#unless (check-equals @model.isOperator 'true')}}
+                        <div>Rs.{{bus.fare}}</div>
+                         {{!-- <CommonButton @class="book-now" @label="Book Now" @action={{on 'click' this.showPopup}}/> --}}
+                        <button class="book-now" type="button" {{on 'click' (action "showPopup" bus)}}>Book Now</button>
+                    {{/unless}}
+                    </li>
+                {{else}}
+                        <div style="color:red;text-height:30px;"><b>No buses available for this Journey</b></div>
+                {{/each}}
+            </ul>
+    
+         {{#unless @model.loginUserName}}
+                <LinkTo class="button1" @route="login">Login</LinkTo>
+        {{/unless}}
+                <LinkTo class="button1" @route="homepage">Back to Home</LinkTo>
+</div>
+
+
+{{outlet}}

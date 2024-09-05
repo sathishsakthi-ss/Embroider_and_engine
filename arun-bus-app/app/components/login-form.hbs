@@ -1,0 +1,40 @@
+<div class="main-form">
+    <h4>Login</h4>
+    <form {{on "submit" (action this.submitForm)}}>
+        {{!-- <ValidatedInput @model={{@model}} @type="text" @valuePath="username" @placeholder="Email Address" @showValidations={{@validate}} @value={{this.username}}/>
+        <ValidatedInput @model={{@model}} @type="password" @valuePath="password" @placeholder="Password" @showValidations={{@validate}} @value={{this.password}}/> --}}
+
+        <Input
+            class="input-text"
+            id="username"
+            @type="text"
+            placeholder="Email Address"
+            @value={{this.email}}
+            {{on "focusout" this.focusOut}}
+        />
+        <br>
+        {{#if this.showValidations}}
+            {{#if this.validations.attrs.email.isInvalid}}
+                <span class="error">{{this.validations.attrs.email.message}}</span>
+            {{/if}}
+        {{/if}}
+
+        <br>
+         <Input
+            class="input-text"
+            id="password"
+            @type="password"
+            placeholder="Password"
+            @value={{this.password}}
+            {{on "focusout" this.focusOut}}
+        />
+        <br>
+         {{#if this.showValidations}}
+            {{#if this.validations.attrs.password.isInvalid}}
+                <span class="error">{{this.validations.attrs.password.message}}</span>
+            {{/if}}
+        {{/if}}
+        <br>
+        <CommonButton @class="button1" @type="submit" @label="Login"></CommonButton>
+    </form>
+</div>

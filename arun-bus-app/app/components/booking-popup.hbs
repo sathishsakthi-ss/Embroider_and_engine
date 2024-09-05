@@ -1,0 +1,7 @@
+<div class={{@show}}>
+    <div class="popup-container">
+        <button class="popupClose" type="button" {{on 'click' @close}}>&times;</button>
+        {{!-- <NotificationMessage @message={{@message}} /> --}}
+        {{yield}}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="main-form">
+    <h4>Sign Up !</h4>
+    {{!-- <NotificationMessage @message={{this.errorMessage}}/> --}}
+    <form {{on "submit" @onSubmit}}>
+        {{!-- <Input class="input-text" id="name" @type="text" placeholder="Name" @value={{this.username}} required />
+        <br>
+        <Input class="input-text" id="username" @type="email" placeholder="Email" @value={{this.email}} required />
+        <br>
+        <Input class="input-text" id="password" @type="password" placeholder="Create Password" @value={{this.password}} required />
+        <br>
+        <Input class="input-text" id="operator" @type="checkbox" @checked={{@operator}} required /> --}}
+        <ValidatedInput @model={{@model}} @type="text" @valuePath="name" @placeholder="Name" @showValidations={{@validate}} @value={{this.name}}></ValidatedInput>
+        <ValidatedInput @model={{@model}} @type="text" @valuePath="email" @placeholder="Email" @showValidations={{@validate}} @value={{this.email}}></ValidatedInput>
+        <ValidatedInput @model={{@model}} @type="password" @valuePath="password" @placeholder="Password" @showValidations={{@validate}} @value={{this.password}}></ValidatedInput>
+        <ValidatedInput id="operator" class="" @model={{@model}} @type="checkbox" @valuePath="operator" @showValidations={{@validate}} @checked={{@checked}} @value={{this.operator}}></ValidatedInput>       
+        <label for="operator"> Are you a Bus Operator </label>
+        <br>
+        {{!-- {{#if @operator}} --}}
+            {{!-- <input type="checkbox" id="is_operator" name="is_operator" value={{@operator}} hidden> <br> --}}
+            
+        {{!-- {{/if}} --}}
+        <CommonButton @class="button2" @type="submit" @label="Create Account"></CommonButton><br>
+        <GoToHome class="main-form"></GoToHome>
+    </form>
+</div>

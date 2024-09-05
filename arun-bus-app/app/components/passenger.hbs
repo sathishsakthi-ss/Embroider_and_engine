@@ -1,0 +1,9 @@
+<div class="passenger-details">
+  <div>Passenger {{ @index }}</div>
+  <label for="name">Name:</label><br>
+  <ValidatedInput @model={{@model}} @type="text" @valuePath="name" @placeholder="Name" @showValidations={{@validate}} @value={{@model.name}}> </ValidatedInput>
+  {{!-- <Input @type="text" id="name" @value={{@passenger.name}} required /> <br> --}}
+  <label for="age">Age:</label><br>
+  <ValidatedInput @model={{@model}} @type="text" @valuePath="age" @placeholder="Age" @showValidations={{@validate}} @value={{this.age}}> </ValidatedInput>
+  {{!-- <input type="number" id="age" required ><br> --}}.
+</div>

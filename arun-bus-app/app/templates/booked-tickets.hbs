@@ -1,0 +1,28 @@
+{{(page-title "BookedTickets")}}
+{{outlet}}
+<div class="main-form">
+    
+    <Profile @username={{@model.loginUserName}} @operator={{@model.isOperator}}></Profile>
+    {{#if (check-equals @model.isOperator 'true')}}
+      <CommonImage @src="https://cdni.iconscout.com/illustration/premium/thumb/error-403-8196950-6588413.png"></CommonImage>
+      <br>
+      <GoToHome></GoToHome>
+      {{else}}
+        <h3>Booked Ticketes</h3>
+            <ul>
+                {{#each @model.tickets as |ticket|}}
+                <li class="bus-list">
+                    {{ticket.from}} - {{ticket.to}}
+                    <br>
+                    <div style="color:grey;text-height:10px;">Passengers : {{ticket.passengers}}</div>
+                    <div>Date : {{ticket.date}}</div>
+                    <div style="color:grey;text-height:10px;">Bus : {{ticket.travels}}</div>
+                </li>
+                {{else}}
+                <div style="color:red;text-height:30px;"><b>No Tickets available</b></div>
+                {{/each}}
+            </ul>
+     <GoToHome></GoToHome>
+     {{/if}}
+</div>
+

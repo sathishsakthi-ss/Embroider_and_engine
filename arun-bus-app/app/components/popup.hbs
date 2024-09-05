@@ -1,0 +1,16 @@
+<div class="user-profile">
+    {{#if @username}}
+        {{#if (check-equals @operator 'true')}}
+               <img src="https://static.vecteezy.com/system/resources/previews/000/289/745/non_2x/administration-vector-icon.jpg">
+        {{else}}
+            <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png"/>
+            <br>
+            <LinkTo class="true" style="font-size: 14px;" @route="booked-tickets">Booked Ticketes</LinkTo>
+        {{/if}}
+        <div class='user-name'>
+            {{@username}}
+        </div>
+        <br>
+        <div class="logout" {{action this.logout}}>Logut</div>
+    {{/if}}
+</div>

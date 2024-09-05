@@ -1,0 +1,146 @@
+/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300italic,400,700,700italic");
+
+/**
+ * Base Elements
+ */
+
+* {
+  margin: 5px;
+}
+
+body {
+  font-family: Lato, "Open Sans", "Helvetica Neue", "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  line-height: 1.5;
+  background-color: white;
+}
+
+h3 {
+  font-size: 30px;
+  color: green;
+}
+
+.main-form {
+  height: auto;
+  width: 40%;
+  position: relative;
+  top: 100px;
+  left: 40%;
+  background-color: white;
+}
+
+.center {
+  margin: 10px;
+  text-align: center;
+}
+
+.button1 {
+  padding: 5px;
+  background-color: dodgerblue;
+  text-decoration: none;
+  color: white;
+  border-radius: 2px;
+}
+
+.input-text {
+  padding: 2px;
+  margin: 4px;
+}
+
+.button2 {
+  padding: 8px;
+  border-radius: 3px;
+  background-color: green;
+  color: white;
+}
+
+.false,
+.has-error {
+  color: red;
+}
+
+.true {
+  color: green;
+}
+
+.user-profile img {
+  width: 30px;
+}
+
+.user-profile,
+.popupClose {
+  position: relative;
+  float: right;
+}
+
+.book-now {
+  color: white;
+  background-color: green;
+  cursor: pointer;
+}
+
+.bus-list {
+  background-color: #8985fd36;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.logout {
+  font-size: 13px;
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+#seat-count {
+  width: 40px;
+}
+
+#operator {
+  display: inline-block;
+}
+
+.error {
+  font-size: 12px;
+  color: #ff411f;
+  text-align: left;
+}
+
+.common-image {
+  width: 75%;
+  height: 75%;
+}
+
+.notification-message {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  color: white;
+}
+
+.success {
+  background-color: green;
+}
+
+.failure {
+  background-color: red;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
